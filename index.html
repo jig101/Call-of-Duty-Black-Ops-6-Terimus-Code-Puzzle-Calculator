@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terimus Code Puzzle Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* Call of Duty Zombies Theme */
+        body {
+            background-color: #1e1e1e;
+            color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        }
+        .title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .formula, .result {
+            font-size: 1.2rem;
+            margin-top: 15px;
+        }
+        .final-code {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ff00;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .btn-calculate {
+            background-color: #ff0000;
+            color: #f2f2f2;
+            font-weight: bold;
+            border: none;
+        }
+        .btn-calculate:hover {
+            background-color: #d40000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="title text-center">Terimus Code Puzzle Calculator</h1>
+    <p class="text-center">Enter values for X, Y, and Z to generate the code.</p>
+
+    <div class="form-group">
+        <label for="inputX">Enter X:</label>
+        <input type="number" id="inputX" class="form-control" placeholder="Value for X">
+    </div>
+    <div class="form-group">
+        <label for="inputY">Enter Y:</label>
+        <input type="number" id="inputY" class="form-control" placeholder="Value for Y">
+    </div>
+    <div class="form-group">
+        <label for="inputZ">Enter Z:</label>
+        <input type="number" id="inputZ" class="form-control" placeholder="Value for Z">
+    </div>
+
+    <button class="btn btn-calculate btn-block" onclick="generateCode()">Generate Code</button>
+
+    <div id="formulaResults" class="formula mt-4">
+        <!-- Results of each formula will display here -->
+    </div>
+
+    <div id="finalCode" class="final-code">
+        <!-- Final code will be displayed here -->
+    </div>
+</div>
+
+<script>
+    function generateCode() {
+        // Retrieve input values
+        const x = parseFloat(document.getElementById('inputX').value);
+        const y = parseFloat(document.getElementById('inputY').value);
+        const z = parseFloat(document.getElementById('inputZ').value);
+
+        // Check if inputs are numbers and not empty
+        if (isNaN(x) || isNaN(y) || isNaN(z)) {
+            alert("Please enter valid numbers for X, Y, and Z.");
+            return;
+        }
+
+        // Calculate formula results
+        const formula1 = 2 * x + 11;
+        const formula2 = (2 * z + y) - 5;
+        const formula3 = (y + z) - x;
+
+        // Display formula results
+        document.getElementById('formulaResults').innerHTML = `
+            <p>Formula 1 (2X + 11): <strong>${formula1}</strong></p>
+            <p>Formula 2 ((2Z + Y) - 5): <strong>${formula2}</strong></p>
+            <p>Formula 3 ((Y + Z) - X): <strong>${formula3}</strong></p>
+        `;
+
+        // Combine the formula results into the final code
+        const finalCode = `${formula1}-${formula2}-${formula3}`;
+        
+        // Display final code
+        document.getElementById('finalCode').innerText = `Final Code: ${finalCode}`;
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
